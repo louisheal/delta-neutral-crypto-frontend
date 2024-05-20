@@ -3,8 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 const api = axios.create({
-  // TODO: Move url to config
-  baseURL: `http://localhost:5000`
+  baseURL: process.env.REACT_APP_API_URL
 })
 
 class App extends Component {
