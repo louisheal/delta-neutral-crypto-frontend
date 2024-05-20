@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './App.css';
+
+import Pool from './components/Pool'
+
+import './styles/App.css';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL
@@ -26,7 +29,7 @@ class App extends Component {
     <div className="App">
       <header className="App-header">
 
-        {this.state.pools.map(pool => <h2 key={pool.pool_id}>{pool.pool_name}</h2>)}
+        {this.state.pools.map(pool => <Pool key={pool.pool_id} name={pool.pool_name} />)}
 
       </header>
     </div>
