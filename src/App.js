@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
-function App() {
+const api = axios.create({
+  // TODO: Move url to config
+  baseURL: `http://localhost:5000`
+})
+
+class App extends Component {
+
+  state = {
+    pools: []
+  }
+
+  componentDidMount() {
+    this.getPools();
+  }
+
+  getPools = async () => {
+    let data = await api.get('/pools').then(({ data }) => data);
+    this.setState({ pools: data });
+  }
+
+  render() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        {this.state.pools.map(pool => <h2 key={pool.pool_id}>{pool.pool_name}</h2>)}
+
       </header>
     </div>
   );
+  }
 }
 
 export default App;
