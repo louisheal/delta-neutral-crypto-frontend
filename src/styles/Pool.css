@@ -1,0 +1,74 @@
+.pool {
+  background: #fff;
+  margin-bottom: 16px;
+  margin-left: 24px;
+  margin-right: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 48px;
+  padding-right: 48px;
+  border-radius: 24px;
+  box-shadow: 0 0 0 1px rgb(0, 0, 255);
+}
+
+.title span {
+  display: block;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-left {
+  text-align: left;
+  padding-right: 100px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+button {
+  color: white;
+  font-size: 16px;
+  background-color: blue;
+  transition-duration: 0.4s;
+  border-width: 1px;
+  border-color: blue;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+button:hover {
+  color: blue;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3), 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0px;
+}
+
+p {
+  font-size: 20px;
+}
