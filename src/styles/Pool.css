@@ -3,10 +3,7 @@
   margin-bottom: 16px;
   margin-left: 24px;
   margin-right: 24px;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  padding-left: 48px;
-  padding-right: 48px;
+  padding: 48px;
   border-radius: 24px;
   box-shadow: 0 0 0 1px rgb(0, 0, 255);
 }
@@ -15,7 +12,7 @@
   display: block;
 }
 
-.flex {
+.flex-container {
   display: flex;
   justify-content: space-between;
 }
@@ -38,11 +35,28 @@
 
 .align-left {
   text-align: left;
-  padding-right: 100px;
 }
 
 .align-right {
   text-align: right;
+}
+
+.position-30 {
+  left: 28%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.position-50 {
+  left: 55%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.position-70 {
+  right: 24%;
+  position: absolute;
+  /* transform: translateX(-50%); */
 }
 
 button {
