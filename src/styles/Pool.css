@@ -17,6 +17,12 @@
   justify-content: space-between;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .flex-start {
   justify-content: flex-start;
 }
@@ -48,15 +54,14 @@
 }
 
 .position-50 {
-  left: 55%;
+  right: 33%;
   position: absolute;
-  transform: translateX(-50%);
 }
 
 .position-70 {
-  right: 24%;
+  left: 38%;
+  right: 22%;
   position: absolute;
-  /* transform: translateX(-50%); */
 }
 
 button {
@@ -85,4 +90,30 @@ h1, h2, h3, h4, h5, h6, p {
 
 p {
   font-size: 20px;
+}
+
+@media (max-width: 864px) {
+  .pool {
+    padding: 24px;
+  }
+
+  .flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex-row {
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .position-30, .position-50, .position-70 {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+
+  .flex-item {
+    margin-bottom: 16px;
+  }
 }
