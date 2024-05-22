@@ -11,6 +11,8 @@
 .popup {
   top: 50%;
   left: 50%;
+  width: 80%;
+  height: 80%;
   transform: translate(-50%, -50%);
   position: fixed;
   padding: 48px;

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Popup from './Popup';
+import Graph from './Graph';
 import axios from 'axios';
 
 import '../styles/Pool.css';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL
-})
+});
 
 class Pool extends Component {
 
@@ -21,11 +22,12 @@ class Pool extends Component {
   getData = async () => {
     let data = await api.post('/simulate', {
         'pool_id': this.props.pool_id,
-        'usd_to_invest': 1000,
-        'duration_years': 1
+        'usd_to_invest': 400,
+        'duration_years': 0.0384,
       }).then(({ data }) => data);
+    this.setState({ chart: data }, this.togglePopup);
     console.log(data);
-    this.setState({ chart: data });
+    console.log(this.props.pool_id);
   };
 
   togglePopup = () => {
@@ -48,16 +50,7 @@ class Pool extends Component {
 
     return (
     <>
-      <Popup isOpen={isOpen} onClose={this.togglePopup}>
-        <h2>Chart</h2>
-        <p>{this.state.chart}</p>
-        <button onClick={this.togglePopup}>
-          <h3>Close</h3>
-        </button>
-      </Popup>
-
       <div className='pool flex-container align-items-center'>
-
         <div className='flex-item'>
         ICONS
         </div>
@@ -84,14 +77,25 @@ class Pool extends Component {
 
         <div className='flex-item'>
           <button onClick={() => {
-            this.togglePopup();
             this.getData();
           }}>
             <h3>Simulate</h3>
           </button>
         </div>
-
       </div>
+
+      <Popup isOpen={isOpen} onClose={this.togglePopup}>
+        <h2>Chart</h2>
+        <Graph
+          labels={this.state.chart[0]}
+          long={this.state.chart[1]}
+          short={this.state.chart[2]}
+          total={this.state.chart[3]}
+        />
+        <button onClick={this.togglePopup}>
+          <h3>Close</h3>
+        </button>
+      </Popup>
     </>
     )}
 };
