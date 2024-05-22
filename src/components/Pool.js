@@ -1,60 +1,99 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import Popup from './Popup';
+import axios from 'axios';
 
 import '../styles/Pool.css';
 
-const Pool = (props) => {
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL
+})
 
-  const [isOpen, setIsOpen] = useState(false);
+class Pool extends Component {
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+      chart: []
+    };
   };
 
-  return (
-  <>
-    <Popup isOpen={isOpen} onClose={togglePopup}>
-      <h2>Chart</h2>
-      <button onClick={togglePopup}>
-        <h3>Close</h3>
-      </button>
-    </Popup>
+  getData = async () => {
+    let data = await api.post('/simulate', {
+        'pool_id': this.props.pool_id,
+        'usd_to_invest': 1000,
+        'duration_years': 1
+      }).then(({ data }) => data);
+    console.log(data);
+    this.setState({ chart: data });
+  };
 
-    <div className='pool flex-container align-items-center'>
+  togglePopup = () => {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }));
+  };
 
-      <div className='flex-item'>
-      ICONS
-      </div>
+  render() {
 
-      <div className='flex-item position-30'>
-        {props.pool_name.split(' ').map((word, index) => (
-          <h4 key={index}>{word}</h4>
-        ))}
-      </div>
+    const { isOpen } = this.state;
+    const {
+      pool_name,
+      token_one_symbol,
+      token_two_symbol,
+      borrow_rate_one,
+      borrow_rate_two,
+      trading_fee
+    } = this.props;
 
-      <div className='flex-item flex-row position-70'>
-        <div className='align-left'>
-          <p>Borrowing Interest ({props.token_one_symbol}):</p>
-          <p>Borrowing Interest ({props.token_two_symbol}):</p>
-          <p>Trading Fees (7 Day Avg.):</p>
-        </div>
-
-        <div className='align-right'>
-          <p>{props.borrow_rate_one.toFixed(3)}%</p>
-          <p>{props.borrow_rate_two.toFixed(3)}%</p>
-          <p>{props.trading_fee.toFixed(3)}%</p>
-        </div>
-      </div>
-
-      <div className='flex-item'>
-        <button onClick={togglePopup}>
-          <h3>Simulate</h3>
+    return (
+    <>
+      <Popup isOpen={isOpen} onClose={this.togglePopup}>
+        <h2>Chart</h2>
+        <p>{this.state.chart}</p>
+        <button onClick={this.togglePopup}>
+          <h3>Close</h3>
         </button>
-      </div>
+      </Popup>
 
-    </div>
-  </>
-  )
+      <div className='pool flex-container align-items-center'>
+
+        <div className='flex-item'>
+        ICONS
+        </div>
+
+        <div className='flex-item position-30'>
+          {pool_name.split(' ').map((word, index) => (
+            <h4 key={index}>{word}</h4>
+          ))}
+        </div>
+
+        <div className='flex-item flex-row position-70'>
+          <div className='align-left'>
+            <p>Borrowing Interest ({token_one_symbol}):</p>
+            <p>Borrowing Interest ({token_two_symbol}):</p>
+            <p>Trading Fees (7 Day Avg.):</p>
+          </div>
+
+          <div className='align-right'>
+            <p>{borrow_rate_one.toFixed(3)}%</p>
+            <p>{borrow_rate_two.toFixed(3)}%</p>
+            <p>{trading_fee.toFixed(3)}%</p>
+          </div>
+        </div>
+
+        <div className='flex-item'>
+          <button onClick={() => {
+            this.togglePopup();
+            this.getData();
+          }}>
+            <h3>Simulate</h3>
+          </button>
+        </div>
+
+      </div>
+    </>
+    )}
 };
 
 export default Pool;

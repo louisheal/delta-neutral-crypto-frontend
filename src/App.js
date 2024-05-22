@@ -13,16 +13,16 @@ class App extends Component {
 
   state = {
     pools: []
-  }
+  };
 
   componentDidMount() {
     this.getPools();
-  }
+  };
 
   getPools = async () => {
     let data = await api.get('/pools').then(({ data }) => data);
     this.setState({ pools: data });
-  }
+  };
 
   render() {
   return (
@@ -31,6 +31,7 @@ class App extends Component {
         <div className='pool-container'>
         {this.state.pools.map(pool =>
           <Pool key={pool.pool_id}
+                pool_id={pool.pool_id}
                 pool_name={pool.pool_name}
                 borrow_rate_one={pool.borrow_rate_one}
                 borrow_rate_two={pool.borrow_rate_two}
@@ -40,8 +41,7 @@ class App extends Component {
         </div>
       </header>
     </div>
-  );
-  }
+  );};
 }
 
 export default App;
