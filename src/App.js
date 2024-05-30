@@ -17,18 +17,12 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.getPools().then(this.getCharts);
+    this.getPools();
   };
 
   getPools = async () => {
-    let response = await api.get('/pools');
-    this.setState({ pools: response.data });
-    console.log("TEST 1");
-  };
-
-  getCharts = async () => {
-    console.log("TEST 2");
-    let data = await Promise.all(this.state.pools.map(async pool => {
+    let { data: pools } = await api.get('/pools');
+    let charts = await Promise.all(pools.map(async pool => {
       const response = await api.post('/simulate', {
         'pool_id': pool.pool_id,
         'usd_to_invest': 100,
@@ -37,12 +31,7 @@ class App extends Component {
       return response.data;
     }));
 
-    console.log("TEST 3");
-    console.log(data);
-    
-    this.setState({ charts: data });
-
-    console.log("TEST 4");
+    this.setState({ pools, charts });
   };
 
   render() {
