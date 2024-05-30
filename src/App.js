@@ -23,10 +23,12 @@ class App extends Component {
   getPools = async () => {
     let response = await api.get('/pools');
     this.setState({ pools: response.data });
-    this.getCharts();
+    console.log("TEST 1");
+    await this.getCharts();
   };
 
   getCharts = async () => {
+    console.log("TEST 2");
     let data = await Promise.all(this.state.pools.map(async pool => {
       const response = await api.post('/simulate', {
         'pool_id': pool.pool_id,
@@ -35,8 +37,12 @@ class App extends Component {
       });
       return response.data;
     }));
+
+    console.log("TEST 3");
     
     this.setState({ charts: data });
+
+    console.log("TEST 4");
   };
 
   render() {
