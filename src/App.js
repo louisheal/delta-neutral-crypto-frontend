@@ -13,7 +13,7 @@ class App extends Component {
 
   state = {
     pools: [],
-    charts: [],
+    charts: {},
   };
 
   componentDidMount() {
@@ -24,15 +24,16 @@ class App extends Component {
     let { data: pools } = await api.get('/pools');
     this.setState({ pools: pools });
 
-    let charts = await Promise.all(pools.map(async pool => {
+    await Promise.all(pools.map(async pool => {
       const response = await api.post('/simulate', {
         'pool_id': pool.pool_id,
         'usd_to_invest': 100,
         'duration_days': 30,
       });
-      return response.data;
+      this.setState(prevState => ({
+        charts: { ...prevState.charts, [pool.pool_id]: response.data }
+      }));
     }));
-    this.setState({ charts: charts });
   };
 
   render() {
@@ -51,7 +52,7 @@ class App extends Component {
             </h1>
           </div>
           <div className='pool-container'>
-          {pools.map((pool, index) =>
+          {pools.map(pool =>
             <Pool key={pool.pool_id}
                   pool_id={pool.pool_id}
                   pool_name={pool.pool_name}
@@ -60,7 +61,7 @@ class App extends Component {
                   token_one_symbol={pool.token_one_symbol}
                   token_two_symbol={pool.token_two_symbol}
                   trading_fee={pool.trading_fee}
-                  chart_data={charts[index]}/>)}
+                  chart_data={charts[pool.pool_id]}/>)}
           </div>
           <div className='footer'>
           
