@@ -29,8 +29,8 @@ class App extends Component {
     let data = await Promise.all(this.state.pools.map(async pool => {
       const response = await api.post('/simulate', {
         'pool_id': pool.pool_id,
-        'usd_to_invest': 400,
-        'duration_days': 14,
+        'usd_to_invest': 100,
+        'duration_days': 30,
       });
       return response.data;
     }));
@@ -45,6 +45,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <div className='header'>
+            <div>
+              LOGO
+            </div>
+            <h1>
+              Delta-Neutral
+            </h1>
+          </div>
           <div className='pool-container'>
           {pools.map((pool, index) =>
             <Pool key={pool.pool_id}
@@ -56,6 +64,9 @@ class App extends Component {
                   token_two_symbol={pool.token_two_symbol}
                   trading_fee={pool.trading_fee}
                   chart_data={charts[index]}/>)}
+          </div>
+          <div className='footer'>
+          
           </div>
         </header>
       </div>

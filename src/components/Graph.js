@@ -40,15 +40,44 @@ export function Graph ({ labels, long, short, total }) {
       //   borderColor: 'rgba(255, 0, 0, 0.2)',
       // },
       {
-        label: 'Total',
         data: total,
-        borderColor: 'rgb(0, 0, 255)',
+        borderColor: 'rgb(0, 120, 255)',
       },
     ],
   };
 
   const options = {
     pointRadius: 2,
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: 'Return on Investment (%)',
+          font: {
+            size: 24,
+          },
+        },
+        ticks: {
+          callback: function(value, index, ticks) {
+            return value + '%'
+          }
+        },
+      },
+      x: {
+        title: {
+          display: true,
+          text: 'Change in Price of Underlying Asset (%)',
+          font: {
+            size: 24,
+          },
+        }
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   }
 
   return <Line className="graph" data={data} options={options} />

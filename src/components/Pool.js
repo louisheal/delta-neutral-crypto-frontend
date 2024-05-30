@@ -68,9 +68,9 @@ class Pool extends Component {
 
       <Popup isOpen={isOpen} onClose={this.togglePopup}>
         <div className='flex-column '>
-          <h2 >Estimated Profit from $400 after 14 Days</h2>
+          <h2 >Estimated Percentage Return after 30 Days</h2>
           {chart_data ? (
-            <Graph
+            <Graph className='graph'
               labels={chart_data[0]}
               long={chart_data[1]}
               short={chart_data[2]}
