@@ -8,6 +8,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '../styles/Graph.css';
@@ -19,10 +20,12 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler,
 );
 
 export function Graph ({ labels, long, short, total }) {
+
   const data = {
     labels,
     datasets: [
@@ -40,7 +43,7 @@ export function Graph ({ labels, long, short, total }) {
         label: 'Total',
         data: total,
         borderColor: 'rgb(0, 0, 255)',
-      }
+      },
     ],
   };
 

@@ -1,33 +1,16 @@
 import React, { Component } from 'react';
 import Popup from './Popup';
 import Graph from './Graph';
-import axios from 'axios';
 
 import '../styles/Pool.css';
-
-const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
-});
 
 class Pool extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
-      chart: []
+      isOpen: false
     };
-  };
-
-  getData = async () => {
-    let data = await api.post('/simulate', {
-        'pool_id': this.props.pool_id,
-        'usd_to_invest': 400,
-        'duration_days': 14,
-      }).then(({ data }) => data);
-    this.setState({ chart: data }, this.togglePopup);
-    console.log(data);
-    console.log(this.props.pool_id);
   };
 
   togglePopup = () => {
@@ -45,7 +28,8 @@ class Pool extends Component {
       token_two_symbol,
       borrow_rate_one,
       borrow_rate_two,
-      trading_fee
+      trading_fee,
+      chart_data,
     } = this.props;
 
     return (
@@ -76,25 +60,29 @@ class Pool extends Component {
         </div>
 
         <div className='flex-item'>
-          <button onClick={() => {
-            this.getData();
-          }}>
+          <button onClick={this.togglePopup}>
             <h3>Simulate</h3>
           </button>
         </div>
       </div>
 
       <Popup isOpen={isOpen} onClose={this.togglePopup}>
-        <h2>Estimated Profit from $400 after 14 Days</h2>
-        <Graph
-          labels={this.state.chart[0]}
-          long={this.state.chart[1]}
-          short={this.state.chart[2]}
-          total={this.state.chart[3]}
-        />
-        <button onClick={this.togglePopup}>
-          <h3>Close</h3>
-        </button>
+        <div className='flex-column '>
+          <h2 >Estimated Profit from $400 after 14 Days</h2>
+          {chart_data ? (
+            <Graph
+              labels={chart_data[0]}
+              long={chart_data[1]}
+              short={chart_data[2]}
+              total={chart_data[3]}
+            />
+          ) : (
+            <div >Loading...</div>
+          )}
+          <button onClick={this.togglePopup}>
+            <h3>Close</h3>
+          </button>
+        </div>
       </Popup>
     </>
     )}
