@@ -23,7 +23,7 @@ class Pool extends Component {
     let data = await api.post('/simulate', {
         'pool_id': this.props.pool_id,
         'usd_to_invest': 400,
-        'duration_years': 0.0384,
+        'duration_days': 14,
       }).then(({ data }) => data);
     this.setState({ chart: data }, this.togglePopup);
     console.log(data);
@@ -69,9 +69,9 @@ class Pool extends Component {
           </div>
 
           <div className='align-right'>
-            <p>{borrow_rate_one.toFixed(3)}%</p>
-            <p>{borrow_rate_two.toFixed(3)}%</p>
-            <p>{trading_fee.toFixed(3)}%</p>
+            <p>{(borrow_rate_one * 100).toFixed(3)}%</p>
+            <p>{(borrow_rate_two * 100).toFixed(3)}%</p>
+            <p>{(trading_fee * 100).toFixed(3)}%</p>
           </div>
         </div>
 
@@ -85,7 +85,7 @@ class Pool extends Component {
       </div>
 
       <Popup isOpen={isOpen} onClose={this.togglePopup}>
-        <h2>Chart</h2>
+        <h2>Estimated Profit from $400 after 14 Days</h2>
         <Graph
           labels={this.state.chart[0]}
           long={this.state.chart[1]}

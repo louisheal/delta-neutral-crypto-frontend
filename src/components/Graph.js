@@ -26,22 +26,29 @@ export function Graph ({ labels, long, short, total }) {
   const data = {
     labels,
     datasets: [
-      {
-        label: 'Long',
-        data: long
-      },
-      {
-        label: 'Short',
-        data: short
-      },
+      // {
+      //   label: 'Long',
+      //   data: long,
+      //   borderColor: 'rgba(0, 255, 0, 0.2)',
+      // },
+      // {
+      //   label: 'Short',
+      //   data: short,
+      //   borderColor: 'rgba(255, 0, 0, 0.2)',
+      // },
       {
         label: 'Total',
-        data: total
+        data: total,
+        borderColor: 'rgb(0, 0, 255)',
       }
     ],
   };
 
-  return <Line className="graph" data={data} />
+  const options = {
+    pointRadius: 2,
+  }
+
+  return <Line className="graph" data={data} options={options} />
 }
 
 export default Graph;
