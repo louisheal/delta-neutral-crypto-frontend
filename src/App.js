@@ -38,6 +38,7 @@ class App extends Component {
     }));
 
     console.log("TEST 3");
+    console.log(data);
     
     this.setState({ charts: data });
 
