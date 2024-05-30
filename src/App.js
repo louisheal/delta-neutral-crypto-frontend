@@ -17,12 +17,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.getPools().then(this.getCharts);
+    this.getPools();
   };
 
   getPools = async () => {
     let response = await api.get('/pools');
     this.setState({ pools: response.data });
+    this.getCharts();
   };
 
   getCharts = async () => {
