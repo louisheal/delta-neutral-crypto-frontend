@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Popup from './Popup';
 import Graph from './Graph';
+import logo from '../logo.png';
 
 import '../styles/Pool.css';
 
@@ -36,7 +37,8 @@ class Pool extends Component {
     <>
       <div className='pool flex-container align-items-center'>
         <div className='flex-item'>
-        ICONS
+          <img src={logo} className='icon' alt='' />
+          <img src={logo} className='icon' alt='' />
         </div>
 
         <div className='flex-item position-30'>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Pool from './components/Pool'
+import Pool from './components/Pool';
+import logo from './logo.png';
 
 import './styles/App.css';
 
@@ -44,9 +45,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div className='header'>
-            <div>
-              LOGO
-            </div>
+            <img src={logo} className='logo' alt='logo' />
             <h1>
               Delta-Neutral
             </h1>

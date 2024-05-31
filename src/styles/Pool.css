@@ -12,6 +12,12 @@
   max-height: 80%;
 }
 
+.icon {
+  height: 8vmin;
+  background-color: rgb(0, 120, 255);
+  border-radius: 100%;
+}
+
 .title span {
   display: block;
 }
