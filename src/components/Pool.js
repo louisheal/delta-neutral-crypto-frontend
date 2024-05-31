@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Popup from './Popup';
 import Graph from './Graph';
+import spinner from '../loading.png';
 
 import '../styles/Pool.css';
 
@@ -80,7 +81,10 @@ class Pool extends Component {
               total={chart_data[3]}
             />
           ) : (
-            <div >Loading...</div>
+            <div>
+              <img src={spinner} className='spinner' alt='spinner' />
+              <div >Simulating...</div>
+            </div>
           )}
           <button onClick={this.togglePopup}>
             <h3>Close</h3>

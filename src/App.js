@@ -7,6 +7,7 @@ import usdt_logo from './coins/USDT.png';
 
 import Pool from './components/Pool';
 import logo from './logo.png';
+import spinner from './loading.png';
 
 import './styles/App.css';
 
@@ -57,7 +58,7 @@ class App extends Component {
           <div className='header'>
             <img src={logo} className='logo' alt='logo' />
             <h1>
-              Delta-Neutral
+              delta-neutral
             </h1>
           </div>
           <div className='pool-container'>
@@ -76,17 +77,18 @@ class App extends Component {
                 chart_data={charts[pool.pool_id]}/>)
           ) : (
             <div>
-              <h1>
-                Loading...
-              </h1>
+              <img src={spinner} className='spinner' alt='spinner' />
               <p>
-                (Please wait up to 5 minutes for the pools to load.)
+                Pools are currently loading...
+              </p>
+              <p>
+                During busy times this may take longer than normal.
               </p>
             </div>
           )}
           </div>
-          <div className='footer'>
-          
+          <div className='footer' >
+
           </div>
         </header>
       </div>
