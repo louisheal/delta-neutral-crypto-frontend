@@ -4,6 +4,8 @@
   margin-left: 24px;
   margin-right: 24px;
   padding: 48px;
+  padding-left: 64px;
+  padding-right: 64px;
   border-radius: 24px;
   box-shadow: 0 0 0 1px rgb(0, 120, 255);
 }
@@ -13,8 +15,10 @@
 }
 
 .icon {
-  height: 8vmin;
-  background-color: rgb(0, 120, 255);
+  min-height: 50px;
+  height: 7vmin;
+  margin: -8px;
+  border-color: rgb(0, 120, 255);
   border-radius: 100%;
 }
 
@@ -110,7 +114,7 @@ p {
   font-size: 20px;
 }
 
-@media (max-width: 864px) {
+@media (max-width: 892px) {
   .pool {
     padding: 24px;
   }

@@ -3,6 +3,7 @@
 }
 
 .logo {
+  min-height: 72px;
   height: 10vmin;
   pointer-events: none;
 }
@@ -61,7 +62,7 @@
   height: 48px;
 }
 
-@media (max-width: 864px) {
+@media (max-width: 892px) {
   .footer {
     height: 24px;
   }

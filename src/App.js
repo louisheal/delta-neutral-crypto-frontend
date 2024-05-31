@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import cake_logo from './coins/CAKE.png';
+import bnb_logo from './coins/BNB.png';
+import usdt_logo from './coins/USDT.png';
+
 import Pool from './components/Pool';
 import logo from './logo.png';
 
@@ -8,7 +12,13 @@ import './styles/App.css';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL
-})
+});
+
+const logos = {
+  'CAKE': cake_logo,
+  'BNB': bnb_logo,
+  'USDT': usdt_logo,
+};
 
 class App extends Component {
 
@@ -60,6 +70,8 @@ class App extends Component {
                 borrow_rate_two={pool.borrow_rate_two}
                 token_one_symbol={pool.token_one_symbol}
                 token_two_symbol={pool.token_two_symbol}
+                token_one_logo={logos[pool.token_one_symbol]}
+                token_two_logo={logos[pool.token_two_symbol]}
                 trading_fee={pool.trading_fee}
                 chart_data={charts[pool.pool_id]}/>)
           ) : (

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Popup from './Popup';
 import Graph from './Graph';
-import logo from '../logo.png';
 
 import '../styles/Pool.css';
 
@@ -27,6 +26,8 @@ class Pool extends Component {
       pool_name,
       token_one_symbol,
       token_two_symbol,
+      token_one_logo,
+      token_two_logo,
       borrow_rate_one,
       borrow_rate_two,
       trading_fee,
@@ -37,8 +38,8 @@ class Pool extends Component {
     <>
       <div className='pool flex-container align-items-center'>
         <div className='flex-item'>
-          <img src={logo} className='icon' alt='' />
-          <img src={logo} className='icon' alt='' />
+          <img src={token_two_logo} className='icon' alt='' />
+          <img src={token_one_logo} className='icon' alt='' />
         </div>
 
         <div className='flex-item position-30'>
