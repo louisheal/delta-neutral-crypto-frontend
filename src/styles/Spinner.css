@@ -1,0 +1,14 @@
+@media (prefers-reduced-motion: no-preference) {
+  .spinner {
+    animation: spinner-spin infinite 2s linear;
+  }
+}
+
+@keyframes spinner-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

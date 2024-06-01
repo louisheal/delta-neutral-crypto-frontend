@@ -1,41 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState, useCallback } from 'react';
+
 import Popup from './Popup';
 import Graph from './Graph';
-import spinner from '../loading.png';
+import Spinner from './Spinner';
 
 import '../styles/Pool.css';
 
-class Pool extends Component {
+const Pool = ( props ) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
-  togglePopup = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen
-    }));
-  };
+  const {
+    pool_name,
+    borrow_rate_one,
+    borrow_rate_two,
+    token_one_symbol,
+    token_two_symbol,
+    trading_fee,
+    chart_data,
+  } = props;
 
-  render() {
+  const togglePopup = useCallback(() => {
+    setIsOpen(prevState => !prevState);
+  }, []);
 
-    const { isOpen } = this.state;
-    const {
-      pool_name,
-      token_one_symbol,
-      token_two_symbol,
-      token_one_logo,
-      token_two_logo,
-      borrow_rate_one,
-      borrow_rate_two,
-      trading_fee,
-      chart_data,
-    } = this.props;
+  let token_one_logo = `${token_one_symbol}.png`;
+  let token_two_logo = `${token_two_symbol}.png`;
 
-    return (
+  return (
     <>
       <div className='pool flex-container align-items-center'>
         <div className='flex-item'>
@@ -64,13 +56,13 @@ class Pool extends Component {
         </div>
 
         <div className='flex-item'>
-          <button onClick={this.togglePopup}>
+          <button onClick={togglePopup}>
             <h3>Simulate</h3>
           </button>
         </div>
       </div>
 
-      <Popup isOpen={isOpen} onClose={this.togglePopup}>
+      <Popup isOpen={isOpen} onClose={togglePopup}>
         <div className='flex-column '>
           <h2 >Estimated Percentage Return after 30 Days</h2>
           {chart_data ? (
@@ -82,17 +74,17 @@ class Pool extends Component {
             />
           ) : (
             <div>
-              <img src={spinner} className='spinner' alt='spinner' />
+              <Spinner />
               <div >Simulating...</div>
             </div>
           )}
-          <button onClick={this.togglePopup}>
+          <button onClick={togglePopup}>
             <h3>Close</h3>
           </button>
         </div>
       </Popup>
     </>
-    )}
-};
+  );
+}
 
 export default Pool;
