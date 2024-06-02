@@ -6,7 +6,7 @@ import Footer from 'components/Footer/Footer';
 import PoolContainer from 'pages/Pools/PoolContainer';
 import PoolsLoading from 'pages/Pools/PoolsLoading';
 
-import 'styles/App.css';
+import 'assets/App.css';
 
 const App = () => {
 

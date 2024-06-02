@@ -1,14 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import usePopup from 'hooks/usePopup';
 
-import Popup from './Popup';
-import Graph from './Graph';
-import Spinner from 'components/Spinner/Spinner';
+import SimulationPopup from './SimulationPopup';
 
 import bnb_logo from 'assets/BNB.png';
 import cake_logo from 'assets/CAKE.png';
 import usdt_logo from 'assets/USDT.png';
-
-import 'styles/Pool.css';
 
 const logos = {
   'BNB': bnb_logo,
@@ -18,16 +14,12 @@ const logos = {
 
 const Pool = ( props ) => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [popupOpen, togglePopup] = usePopup();
 
   const {
     pool,
-    chart_data,
+    chartData,
   } = props;
-
-  const togglePopup = useCallback(() => {
-    setIsOpen(prevState => !prevState);
-  }, []);
 
   let token_one_logo = logos[pool.token_one_symbol];
   let token_two_logo = logos[pool.token_two_symbol];
@@ -67,27 +59,11 @@ const Pool = ( props ) => {
         </div>
       </div>
 
-      <Popup isOpen={isOpen} onClose={togglePopup}>
-        <div className='flex-column '>
-          <h2 >Estimated Percentage Return after 30 Days</h2>
-          {chart_data ? (
-            <Graph className='graph'
-              labels={chart_data[0]}
-              long={chart_data[1]}
-              short={chart_data[2]}
-              total={chart_data[3]}
-            />
-          ) : (
-            <div>
-              <Spinner />
-              <div >Simulating...</div>
-            </div>
-          )}
-          <button onClick={togglePopup}>
-            <h3>Close</h3>
-          </button>
-        </div>
-      </Popup>
+      <SimulationPopup
+        isOpen={popupOpen}
+        togglePopup={togglePopup}
+        chartData={chartData} />
+      
     </>
   );
 }

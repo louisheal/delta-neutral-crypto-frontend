@@ -11,7 +11,7 @@ const PoolsLoading = () => {
         During busy times this may take longer than normal.
       </p>
     </div>
-  )
+  );
 }
 
 export default PoolsLoading;
