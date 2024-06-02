@@ -2,11 +2,11 @@ import Slider from '@mui/material/Slider';
 
 const DaySlider = ({ sliderValue, onChange, onChangeCommitted, disabled, className }) => {
   const marks = [
-    { value: 1, label: '1 Day' },
-    { value: 30, label: '30 Days' },
-    { value: 90, label: '90 Days' },
-    { value: 180, label: '180 Days' },
-    { value: 365, label: '365 Days '},
+    { value: 1, label: '1' },
+    { value: 30, label: '30' },
+    { value: 90, label: '90' },
+    { value: 180, label: '180' },
+    { value: 365, label: '365 '},
   ];
 
   return (
