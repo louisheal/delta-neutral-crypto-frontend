@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchPools, fetchCharts } from '../api/fetchItems';
+import { fetchPools, fetchCharts } from '../api/fetchPoolData';
 
 const useFetchPoolData = () => {
   const [pools, setPools] = useState(null);

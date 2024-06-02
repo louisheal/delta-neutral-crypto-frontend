@@ -4,19 +4,24 @@ import Popup from './Popup';
 import Graph from './Graph';
 import Spinner from './Spinner';
 
+import bnb_logo from '../assets/BNB.png';
+import cake_logo from '../assets/CAKE.png';
+import usdt_logo from '../assets/USDT.png';
+
 import '../styles/Pool.css';
+
+const logos = {
+  'BNB': bnb_logo,
+  'CAKE': cake_logo,
+  'USDT': usdt_logo,
+}
 
 const Pool = ( props ) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
   const {
-    pool_name,
-    borrow_rate_one,
-    borrow_rate_two,
-    token_one_symbol,
-    token_two_symbol,
-    trading_fee,
+    pool,
     chart_data,
   } = props;
 
@@ -24,8 +29,8 @@ const Pool = ( props ) => {
     setIsOpen(prevState => !prevState);
   }, []);
 
-  let token_one_logo = `${token_one_symbol}.png`;
-  let token_two_logo = `${token_two_symbol}.png`;
+  let token_one_logo = logos[pool.token_one_symbol];
+  let token_two_logo = logos[pool.token_two_symbol];
 
   return (
     <>
@@ -36,22 +41,22 @@ const Pool = ( props ) => {
         </div>
 
         <div className='flex-item position-30'>
-          {pool_name.split(' ').map((word, index) => (
+          {pool.pool_name.split(' ').map((word, index) => (
             <h4 key={index}>{word}</h4>
           ))}
         </div>
 
         <div className='flex-item flex-row position-70'>
           <div className='align-left'>
-            <p>Borrowing Interest ({token_one_symbol}):</p>
-            <p>Borrowing Interest ({token_two_symbol}):</p>
+            <p>Borrowing Interest ({pool.token_one_symbol}):</p>
+            <p>Borrowing Interest ({pool.token_two_symbol}):</p>
             <p>Trading Fees (7 Day Avg.):</p>
           </div>
 
           <div className='align-right'>
-            <p>{(borrow_rate_one * 100).toFixed(3)}%</p>
-            <p>{(borrow_rate_two * 100).toFixed(3)}%</p>
-            <p>{(trading_fee * 100).toFixed(3)}%</p>
+            <p>{(pool.borrow_rate_one * 100).toFixed(3)}%</p>
+            <p>{(pool.borrow_rate_two * 100).toFixed(3)}%</p>
+            <p>{(pool.trading_fee * 100).toFixed(3)}%</p>
           </div>
         </div>
 
