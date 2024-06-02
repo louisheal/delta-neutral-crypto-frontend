@@ -1,4 +1,4 @@
-import useFetchPoolData from 'hooks/useFetchPoolData';
+import useFetchPools from 'hooks/useFetchPools';
 
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -10,15 +10,15 @@ import 'assets/App.css';
 
 const App = () => {
 
-  const { pools, charts } = useFetchPoolData();
+  const { pools, poolsLoading } = useFetchPools();
   
   return (
     <div className="app">
       <Header />
-      {pools ? (
-        <PoolContainer pools={pools} charts={charts} />
-      ) : (
+      {poolsLoading ? (
         <PoolsLoading />
+      ) : (
+        <PoolContainer pools={pools} />
       )}
       <Footer />
     </div>

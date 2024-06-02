@@ -1,5 +1,7 @@
 import usePopup from 'hooks/usePopup';
+import useChartSlider from 'hooks/useChartSlider';
 
+import Button from 'components/Button/Button';
 import SimulationPopup from './SimulationPopup';
 
 import bnb_logo from 'assets/BNB.png';
@@ -12,14 +14,10 @@ const logos = {
   'USDT': usdt_logo,
 }
 
-const Pool = ( props ) => {
-
+const Pool = ({ pool }) => {
   const [popupOpen, togglePopup] = usePopup(false);
-
-  const {
-    pool,
-    chartData,
-  } = props;
+  const [chart, chartLoading, sliderValue, onChange, onChangeCommitted]
+    = useChartSlider(pool.pool_id, 30);
 
   let token_one_logo = logos[pool.token_one_symbol];
   let token_two_logo = logos[pool.token_two_symbol];
@@ -52,17 +50,18 @@ const Pool = ( props ) => {
           </div>
         </div>
 
-        <div className='flex-item'>
-          <button onClick={togglePopup}>
-            <h3>Simulate</h3>
-          </button>
-        </div>
+        <Button onClick={togglePopup} text='Simulate' className='flex-item' />
+        
       </div>
 
       <SimulationPopup
         isOpen={popupOpen}
         togglePopup={togglePopup}
-        chartData={chartData} />
+        chart={chart}
+        chartLoading={chartLoading}
+        sliderValue={sliderValue}
+        onChange={onChange}
+        onChangeCommitted={onChangeCommitted} />
       
     </>
   );

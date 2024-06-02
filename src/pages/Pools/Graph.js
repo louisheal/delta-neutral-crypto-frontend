@@ -47,6 +47,8 @@ export function Graph ({ labels, long, short, total }) {
 
   const options = {
     pointRadius: 2,
+    maintainAspectRatio: false,
+    responsive: true,
     scales: {
       y: {
         title: {
@@ -57,6 +59,7 @@ export function Graph ({ labels, long, short, total }) {
           },
         },
         ticks: {
+          stepSize: 5,
           callback: function(value, index, ticks) {
             return value + '%'
           }

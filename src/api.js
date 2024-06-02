@@ -9,15 +9,13 @@ const fetchPools = async () => {
   return pools;
 }
 
-const fetchCharts = async function* (pools) {
-  for (const pool of pools) {
-    const { data: chart } = await api.post('/simulate', {
-      'pool_id': pool.pool_id,
-      'usd_to_invest': 100,
-      'duration_days': 30,
-    });
-    yield { pool_id: pool.pool_id, chart };
-  }
+const fetchChart = async (poolId, durationDays) => {
+  const { data: chart } = await api.post('/simulate', {
+    'pool_id': poolId,
+    'usd_to_invest': 100,
+    'duration_days': durationDays,
+  });
+  return chart;
 }
 
-export { fetchPools, fetchCharts };
+export { fetchPools, fetchChart };

@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-const usePopup = ({ initial }) => {
+const usePopup = (initial) => {
   const [isOpen, setIsOpen] = useState(initial);
 
   const togglePopup = useCallback(() => {
