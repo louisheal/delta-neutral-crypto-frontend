@@ -1,4 +1,4 @@
-import '../styles/Popup.css';
+import 'styles/Popup.css';
 
 const Popup = ({ isOpen, onClose, children }) => {
   return (

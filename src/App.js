@@ -1,11 +1,12 @@
-import useFetchPoolData from './hooks/useFetchPoolData';
+import useFetchPoolData from 'hooks/useFetchPoolData';
 
-import Header from './components/Header';
-import PoolContainer from './components/PoolContainer';
-import PoolsLoading from './components/PoolsLoading';
-import Footer from './components/Footer';
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
 
-import './styles/App.css';
+import PoolContainer from 'pages/Pools/PoolContainer';
+import PoolsLoading from 'pages/Pools/PoolsLoading';
+
+import 'styles/App.css';
 
 const App = () => {
 

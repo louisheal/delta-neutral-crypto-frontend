@@ -1,6 +1,6 @@
 import Pool from './Pool';
 
-import '../styles/PoolContainer.css';
+import 'styles/PoolContainer.css';
 
 const PoolContainer = ({ pools, charts }) => {
   return (

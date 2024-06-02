@@ -2,13 +2,13 @@ import React, { useState, useCallback } from 'react';
 
 import Popup from './Popup';
 import Graph from './Graph';
-import Spinner from './Spinner';
+import Spinner from 'components/Spinner/Spinner';
 
-import bnb_logo from '../assets/BNB.png';
-import cake_logo from '../assets/CAKE.png';
-import usdt_logo from '../assets/USDT.png';
+import bnb_logo from 'assets/BNB.png';
+import cake_logo from 'assets/CAKE.png';
+import usdt_logo from 'assets/USDT.png';
 
-import '../styles/Pool.css';
+import 'styles/Pool.css';
 
 const logos = {
   'BNB': bnb_logo,

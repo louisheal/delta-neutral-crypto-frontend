@@ -1,6 +1,6 @@
-import logo from '../assets/logo.png';
+import logo from 'assets/logo.png';
 
-import '../styles/Header.css';
+import './Header.css';
 
 const Header = () => {
   return (

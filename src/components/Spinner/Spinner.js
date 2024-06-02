@@ -1,6 +1,6 @@
-import spinner from '../assets/spinner.png';
+import spinner from 'assets/spinner.png';
 
-import '../styles/Spinner.css';
+import './Spinner.css';
 
 const Spinner = () => {
   return (
