@@ -14,7 +14,7 @@ const logos = {
 
 const Pool = ( props ) => {
 
-  const [popupOpen, togglePopup] = usePopup();
+  const [popupOpen, togglePopup] = usePopup(false);
 
   const {
     pool,
