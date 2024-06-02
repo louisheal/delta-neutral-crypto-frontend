@@ -14,7 +14,6 @@ const DaySlider = ({ sliderValue, onChange, onChangeCommitted, disabled, classNa
       min={1}
       max={365}
       marks={marks}
-      defaultValue={sliderValue}
       value={sliderValue}
       onChange={onChange}
       onChangeCommitted={onChangeCommitted}
