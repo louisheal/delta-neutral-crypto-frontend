@@ -110,18 +110,13 @@
 }
 
 .position-30 {
-  left: 28%;
+  left: 32%;
   position: absolute;
   transform: translateX(-50%);
 }
 
-.position-50 {
-  right: 33%;
-  position: absolute;
-}
-
 .position-70 {
-  left: 38%;
+  left: 42%;
   right: 22%;
   position: absolute;
 }
@@ -134,7 +129,7 @@ p {
   font-size: 20px;
 }
 
-@media (max-width: 892px) {
+@media (max-width: 912px) {
   .pool {
     padding: 24px;
   }
