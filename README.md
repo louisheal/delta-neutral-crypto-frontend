@@ -1,26 +1,52 @@
-# delta-neutral-crypto-frontend
+# Delta-Neutral (Frontend)
 A dashboard interface for displaying Delta-Neutral trading opportunities.
 
-# Getting Started with Create React App
+## Links
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Frontend
+URL: [https://delta-neutral.louisheal.com/](https://delta-neutral.louisheal.com/)
+Github: [https://github.com/louisheal/delta-neutral-crypto-frontend](https://github.com/louisheal/delta-neutral-crypto-frontend)
+
+### Backend
+URL: [https://api.delta-neutral.louisheal.com/](https://api.delta-neutral.louisheal.com/)
+Github: [https://github.com/louisheal/delta-neutral-crypto-backend](https://github.com/louisheal/delta-neutral-crypto-backend)
+
+## Endpoints
+There are two endpoints available from [https://api.delta-neutral.louisheal.com/](https://api.delta-neutral.louisheal.com/):
+
+### GET `/pools`
+Returns a JSON list of Pool objects with the following structure:
+  `pool_id` - A unique identifier for the pool.
+  `pool_name`: The display name of the pool.
+  `token_one_symbol`: The ticker symbol of the first coin in the pool.
+  `token_two_symbol`: The ticker symbol of the second coin in the pool.
+  `trading_fee`: The 7 day average trading fees earnt by liquidity providers to the pool.
+  `borrow_rate_one`: The current interest rate for borrowing the first coin.
+  `borrow_rate_two`: The current interest rate for borrowing the second coin.
+
+### POST `/simulate`
+Takes in a JSON body with 3 required arguments:
+  `pool_id` - The unique identifier of the pool to simulate.
+  `usd_to_invest` - The initial amount of money to simulate investing in USD.
+  `duration_days` - The number of days to simulate for.
+
+Returns a JSON list of the data necessary to display a graph of the simulation:
+  `[0]` - A list of the labels for the x-axis.
+  `[1]` - A list of the long position values.
+  `[2]` - A list of the short position values.
+  `[3]` - A list of the total position values.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -31,43 +57,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
