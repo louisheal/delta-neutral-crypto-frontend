@@ -1,8 +1,8 @@
 import usePopup from 'hooks/usePopup';
 import useChartSlider from 'hooks/useChartSlider';
 
-import Popup from 'components/Popup';
-import Button from 'components/Button';
+import Popup from 'components/ui/Popup';
+import Button from 'components/ui/Button';
 import TokenLogos from 'components/TokenLogos';
 
 import Simulation from 'pages/Simulation';

@@ -1,8 +1,8 @@
 import Graph from "pages/Graph";
 import SimulationLoading from "pages/SimulationLoading";
 
-import Button from "components/Button";
-import DaySlider from "components/DaySlider";
+import Button from "components/ui/Button";
+import DaySlider from "components/ui/DaySlider";
 
 const Simulation = ({ poolId, tokenOneSymbol, tokenTwoSymbol, chart, chartLoading, sliderValue, onChange, onChangeCommitted, close }) => {
   return (
