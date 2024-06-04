@@ -1,31 +1,11 @@
-import { useState, useEffect } from "react"
-import { fetchChart } from 'api';
+import useSlider from 'hooks/useSlider';
+import useFetchChart from 'hooks/useFetchChart';
 
 const useChartSlider = (poolId, initial) => {
-  const [chart, setChart] = useState([]);
-  const [chartLoading, setChartLoading] = useState(true);
-  const [sliderValue, setSliderValue] = useState(initial);
-  const [durationDays, setDurationDays] = useState(initial);
+  const [previewValue, comittedValue, onChange, onChangeCommitted] = useSlider(initial);
+  const [chart, chartLoading] = useFetchChart(poolId, comittedValue);
 
-  const onChange = (event, newValue) => {
-    setSliderValue(newValue);
-  }
-
-  const onChangeCommitted = (event, newValue) => {
-    setDurationDays(newValue);
-  }
-
-  useEffect(() => {
-    const updateChart = async () => {
-      setChartLoading(true);
-      const fetchedChart = await fetchChart(poolId, durationDays);
-      setChart(fetchedChart);
-      setChartLoading(false);
-    };
-    updateChart();
-  }, [poolId, durationDays]);
-
-  return [chart, chartLoading, sliderValue, onChange, onChangeCommitted];
+  return [chart, chartLoading, previewValue, onChange, onChangeCommitted];
 }
 
 export default useChartSlider;

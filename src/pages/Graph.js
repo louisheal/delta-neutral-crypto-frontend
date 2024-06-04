@@ -28,17 +28,18 @@ export function Graph ({ labels, long, short, total }) {
   const data = {
     labels,
     datasets: [
-      // {
-      //   label: 'Long',
-      //   data: long,
-      //   borderColor: 'rgba(0, 255, 0, 0.2)',
-      // },
-      // {
-      //   label: 'Short',
-      //   data: short,
-      //   borderColor: 'rgba(255, 0, 0, 0.2)',
-      // },
       {
+        label: 'Long',
+        data: long,
+        borderColor: 'rgba(0, 255, 0, 0.2)',
+      },
+      {
+        label: 'Short',
+        data: short,
+        borderColor: 'rgba(255, 0, 0, 0.2)',
+      },
+      {
+        label: 'Total',
         data: total,
         borderColor: 'rgb(0, 120, 255)',
       },
@@ -77,7 +78,7 @@ export function Graph ({ labels, long, short, total }) {
     },
     plugins: {
       legend: {
-        display: false,
+        display: true,
       },
     },
   }

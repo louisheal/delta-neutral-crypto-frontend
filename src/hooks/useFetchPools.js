@@ -14,7 +14,7 @@ const useFetchPools = () => {
     fetch();
   }, []);
 
-  return { pools, poolsLoading };
+  return [pools, poolsLoading];
 };
 
 export default useFetchPools;

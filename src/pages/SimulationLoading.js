@@ -1,10 +1,10 @@
 import Spinner from "components/Spinner/Spinner";
 
-const SimulationLoading = () => {
+const SimulationLoading = ({ className }) => {
   return (
-    <div>
+    <div className={className} >
       <Spinner />
-      <div >Simulating...</div>
+      <p>Simulating...</p>
     </div>
   );
 }

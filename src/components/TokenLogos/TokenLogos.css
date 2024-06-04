@@ -1,0 +1,7 @@
+.logo {
+  min-height: 50px;
+  height: 7vmin;
+  margin: -8px;
+  border-color: rgb(0, 120, 255);
+  border-radius: 100%;
+}
