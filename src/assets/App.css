@@ -70,10 +70,6 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 0px;
 }
 
-p {
-  font-size: 20px;
-}
-
 @media (max-width: 912px) {
   .pool {
     padding: 24px;
