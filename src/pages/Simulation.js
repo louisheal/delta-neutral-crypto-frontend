@@ -23,9 +23,9 @@ const Simulation = ({ poolId, tokenOneSymbol, tokenTwoSymbol, chart, chartLoadin
           {/** TODO: Move chart separation somewhere else, or make it a dict */}
           <Graph
             labels={chart[0]}
-            long={chart[1]}
-            short={chart[2]}
-            total={chart[3]}
+            // long={chart[1]}
+            // short={chart[2]}
+            total={chart[1]}
             className='graph' />
         </div>
       )}

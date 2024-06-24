@@ -31,12 +31,14 @@ const Pool = ({ pool }) => {
             <p>Borrowing Interest ({pool.token_one_symbol}):</p>
             <p>Borrowing Interest ({pool.token_two_symbol}):</p>
             <p>Trading Fees (7 Day Avg.):</p>
+            <p>Estimated APY:</p>
           </div>
 
           <div className='align-right'>
             <p>{(pool.borrow_rate_one * 100).toFixed(3)}%</p>
             <p>{(pool.borrow_rate_two * 100).toFixed(3)}%</p>
             <p>{(pool.trading_fee * 100).toFixed(3)}%</p>
+            <p>{(pool.apy * 100).toFixed(3)}%</p>
           </div>
         </div>
 

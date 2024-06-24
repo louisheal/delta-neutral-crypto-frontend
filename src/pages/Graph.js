@@ -23,21 +23,11 @@ ChartJS.register(
   Filler,
 );
 
-export function Graph ({ labels, long, short, total }) {
+export function Graph ({ labels, total }) {
 
   const data = {
     labels,
     datasets: [
-      {
-        label: 'Long',
-        data: long,
-        borderColor: 'rgba(0, 255, 0, 0.2)',
-      },
-      {
-        label: 'Short',
-        data: short,
-        borderColor: 'rgba(255, 0, 0, 0.2)',
-      },
       {
         label: 'Total',
         data: total,
