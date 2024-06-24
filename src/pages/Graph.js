@@ -29,7 +29,7 @@ export function Graph ({ labels, total }) {
     labels,
     datasets: [
       {
-        label: 'Total',
+        label: 'ROI (%)',
         data: total,
         borderColor: 'rgb(0, 120, 255)',
       },
