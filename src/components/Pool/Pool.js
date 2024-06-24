@@ -30,7 +30,7 @@ const Pool = ({ pool }) => {
           <div className='align-left'>
             <p>Borrowing Interest ({pool.token_one_symbol}):</p>
             <p>Borrowing Interest ({pool.token_two_symbol}):</p>
-            <p>Trading Fees (7 Day Avg.):</p>
+            <p>Trading Fees APR:</p>
             <p>Estimated APY:</p>
           </div>
 

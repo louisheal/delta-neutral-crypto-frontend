@@ -5,6 +5,9 @@ import Button from "components/ui/Button";
 import DaySlider from "components/ui/DaySlider";
 
 const Simulation = ({ poolId, tokenOneSymbol, tokenTwoSymbol, chart, chartLoading, sliderValue, onChange, onChangeCommitted, close }) => {
+
+  const poolUrl = `https://app.alpacafinance.org/farm/pancake-swap/pool/${poolId}/-/open`;
+
   return (
     <>
       <h2>Estimated Percentage Return after {sliderValue} Days</h2>
@@ -48,7 +51,9 @@ const Simulation = ({ poolId, tokenOneSymbol, tokenTwoSymbol, chart, chartLoadin
 
       <div className='flex-row width-100 gap-1' >
         <Button text='Close' onClick={close} className='width-100' />
-        <Button text='Contine to AlpacaFinance' className='width-100' />
+        <a href={poolUrl} target="_blank" rel="noopener noreferrer" className='width-100'>
+          <Button text='Continue to AlpacaFinance' className='width-100' />
+        </a>
       </div>
     </>
   );
